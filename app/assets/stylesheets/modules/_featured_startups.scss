@@ -1,0 +1,11 @@
+.featured-startups {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
+  a {
+    flex-grow: 1;
+    margin: 5px;
+  }
+}

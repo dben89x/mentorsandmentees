@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: spark_development
+
+test:
+  <<: *default
+  database: spark_test
+
+production:
+  <<: *default

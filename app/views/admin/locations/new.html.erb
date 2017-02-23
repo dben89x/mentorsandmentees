@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h1>New Location</h1>
+
+  <%= simple_form_for(@location, url: admin_locations_path, method: :post, html: { class: 'form-horizontal' }) do |f| %>
+    <div class="short-input">
+      <%= f.input :city %>
+      <%= f.input :state %>
+      <%= f.input :state_abbreviation %>
+    </div>
+
+    <%= f.submit "Create", class: "btn btn-default submit" %>
+  <% end %>
+</div>

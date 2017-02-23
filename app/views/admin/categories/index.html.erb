@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Admin: Categories</h1>
+
+  <p>Current Categories:</p>
+  <ul>
+    <% @categories.each do |category| %>
+      <li>
+        <%= category.name %>
+        <%= link_to edit_admin_category_path(category) do %>
+          <span class="admin-icon glyphicon glyphicon-pencil" aria-hidden="true"></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Add Category", new_admin_category_path, class: 'large-green' %>
+</div>

@@ -1,0 +1,196 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  padding-top: 70px;
+}
+.home .jumbotron {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), image-url("cu_engineering_center.jpg");
+  background-position: center;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  letter-spacing: 4px;
+}
+.home .jumbotron h1 {
+  font-weight: bold;
+}
+.navbar {
+  background-color: white;
+  border: 0;
+  border-bottom: $dark-gray solid 1px;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+.navbar-default .navbar-brand {
+  color: $green;
+  padding: 5px;
+}
+.navbar-default .navbar-brand img {
+  max-height: 100%;
+}
+.navbar .btn-default,
+.panel-footer .btn-default {
+  padding: 6px 15px;
+}
+.navbar-default .navbar-nav li .navbar-btn {
+  color: white;
+}
+.navbar-default .navbar-nav li .navbar-btn:active {
+  background-color: $green;
+  box-shadow: $button-box-shadow 0 1px 0 0;
+  color: white;
+  position: relative;
+  top: 2px;
+}
+.navbar-default {
+  .navbar-nav {
+    li {
+      .navbar-btn {
+        &:focus,
+        &:hover,
+        &:hover:focus {
+          color: white;
+          background-color: $green;
+        }
+      }
+    }
+  }
+}
+.navbar li {
+  text-align: center;
+}
+.navbar .btn-default {
+  margin: 18px 10px;
+}
+.section {
+  text-align: center;
+}
+.section img {
+  margin: 10px auto;
+}
+.cta {
+  text-align: center;
+}
+.gmaps {
+  height: 50vh;
+}
+@media (min-width: 768px) {
+  .quote {
+    display: flex;
+  }
+}
+.quote > * {
+  margin: auto;
+}
+.get-more-info {
+  display: flex;
+  text-align: center;
+  padding: 1em;
+}
+.get-more-info > * {
+  display: flex;
+}
+.get-more-info p {
+  margin: 21px auto;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  vertical-align: middle;
+}
+.get-more-info a {
+  margin: auto;
+}
+.cta,
+.get-more-info {
+  min-height: 10em;
+  display: flex;
+  align-items: center;
+}
+.cta > *,
+.get-more-info > * {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+}
+.section h2,
+.section h3,
+.section h4 {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.toggle {
+  cursor: pointer;
+}
+.how-it-works li,
+.how-it-works p {
+  text-align: left;
+}
+.bottom-nav {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 5em;
+  text-align: center;
+}
+.bottom-nav > * {
+  margin: auto 0;
+}
+.edit-profile,
+.profile,
+.signin,
+.signup {
+  display: flex;
+  justify-content: center;
+}
+.signin input[type="checkbox"] {
+  margin-right: 4px;
+}
+.profile .heading {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.profile .heading .page-header {
+  flex-grow: 1;
+  border-bottom: none;
+}
+.profile .heading img {
+  margin-bottom: 20px;
+}
+.modal .modal-footer .btn-default {
+  margin: 10px;
+}
+.search .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.profile-summary ul {
+  padding: 0;
+}
+.profile-summary li {
+  list-style-type: none;
+}
+.panel-footer .btn-default {
+  margin: 0 0 5px 0;
+}
+.search-results {
+  display: flex;
+  flex-wrap: wrap;
+}
+.section {
+  margin: 40px;
+  h2 {
+    margin: 40px 0;
+  }
+}
+.alternating-stripe {
+  background-color: $light-gray;
+}
+blockquote {
+  border-left-color: $dark-gray;
+}

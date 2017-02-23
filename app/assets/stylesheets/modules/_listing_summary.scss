@@ -1,0 +1,17 @@
+.profile-summary {
+  .avatar {
+    padding-left: 0;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .description {
+    margin-top: 10px;
+  }
+
+  .avatar-and-info {
+    @extend .clearfix;
+  }
+}

@@ -1,0 +1,62 @@
+<div class="container profile">
+  <div class="col-xs-12 col-sm-8">
+    <div class="row heading">
+      <div class="page-header">
+        <h1><%= @profile.full_name %></h1>
+        <p class="lead"><%= @profile.purpose %></p>
+      </div>
+      <%= image_tag @profile.avatar.url(:thumb) %>
+    </div>
+    <div class="row">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>LinkedIn</td>
+            <td><%= link_to(@profile.linked_in, @profile.linked_in, target: '_blank') if @profile.linked_in %></td>
+          </tr>
+          <tr>
+            <td>Location</td>
+            <td><%= @profile.location.try(:city_and_state) %></td>
+          </tr>
+          <tr>
+            <td>Desired Hours Per Week</td>
+            <td><%= @profile.hours_per_week %></td>
+          </tr>
+          <tr>
+            <td>Skills</td>
+            <td><%= @profile.skill_list.to_s %></td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td><%= @profile.description %></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><%= @profile.email %></td>
+          </tr>
+          <tr>
+            <td>
+              Last Updated:
+            </td>
+            <td>
+              <%= @profile.updated_at.to_date.to_s(:long) %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <% #todo: move this to authenticated? or similar method %>
+    <% if current_profile == @profile || current_user.admin? %>
+      <%= link_to "Edit Profile", edit_intern_profile_path(@profile), class: 'btn btn-default' %>
+
+      <% if @profile.active? %>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="<%= "#match-modal-#{@profile.id}" %>">
+          Found a Match!
+        </button>
+        <%= render 'shared/match_modal', matcher: @profile, id: @profile.id %>
+      <% else %>
+        <p>Your profile is currently <b>private</b></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

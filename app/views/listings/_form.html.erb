@@ -1,0 +1,15 @@
+<%= simple_form_for listing do |f| %>
+  <%= f.input :position_name %>
+  <%= f.input :posting_link %>
+  <%= f.input :contact_name %>
+  <%= f.input :contact_email, input_html: { value: profile.email } %>
+  <%= f.input :skill_list, input_html: { value: f.object.skill_list.to_s } %>
+  <%= f.input :description %>
+  <%= f.input :hours_per_week %>
+  <%= f.association :category, label: 'Area of Interest' %>
+  <%= f.association :location, label_method: :city_and_state %>
+  <%= f.input :active, label: 'Published' %>
+
+  <%= link_to 'Cancel', listing.profile.path %>
+  <%= f.submit "Save", class: "btn btn-default" %>
+<% end %>

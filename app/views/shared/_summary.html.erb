@@ -1,0 +1,69 @@
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 profile-summary">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <%= listing.job_listing? ? listing.position_name : listing.full_name %>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="avatar-and-info">
+        <div class="col-xs-3 col-sm-4 col-md-3 avatar">
+          <%= image_tag listing.avatar.url(:thumb) %>
+        </div>
+        <div class="col-xs-9 col-sm-8 col-md-9">
+          <ul>
+            <% if listing.job_listing? %>
+              <li>
+                <i class="glyphicon glyphicon-user"></i>
+                <%= link_to listing.name, listing.path %>
+              </li>
+            <% end %>
+            <li>
+              <i class="glyphicon glyphicon-briefcase"></i>
+              <%= listing.category_name %>
+            </li>
+            <% if listing.location %>
+              <li>
+                <i class="glyphicon glyphicon-map-marker"></i>
+                <%= listing.location.try(:city_and_state) %>
+              </li>
+            <% end %>
+            <% if listing.hours_per_week %>
+              <li>
+                <i class="glyphicon glyphicon-time"></i>
+                <%= "#{listing.hours_per_week} hours per week" %>
+              </li>
+            <% end %>
+            <% if listing.skill_list.present? %>
+              <li>
+                <i class="glyphicon glyphicon-tag"></i>
+                <%= listing.skill_list %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <p class="description"><%= listing.description %></p>
+    </div>
+    <div class="panel-footer">
+      <%= link_to "View", listing.show_link, class: "btn btn-default" %>
+
+      <% #todo: move these actions into a drop-down? %>
+      <% if listing.profile == current_profile || current_user.admin? %>
+        <% if listing.job_listing? %>
+          <%= link_to "Edit", edit_listing_path(listing), class: "btn btn-default" %>
+        <% end %>
+
+        <% if listing.active? %>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="<%= "#match-modal-#{listing.id}" %>">
+            Found A Match
+          </button>
+          <%= render 'shared/match_modal', matcher: listing, id: listing.id %>
+        <% else %>
+          <span>Not Published</span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

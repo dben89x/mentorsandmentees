@@ -1,0 +1,24 @@
+<div class="modal fade" id="<%= "match-modal-#{id}" %>" tabindex="-1" role="dialog" aria-labelledby="match-modal-label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h1>Congratulations! <i class="glyphicon glyphicon-heart"></i>
+        </h1>
+        <p>
+          We are so excited to hear you found a match! Keeping track of how many matches are made is a great way for us to know how much we are helping - please help us out by quickly telling us who you matched with!
+        </p>
+        <br/>
+        <%= simple_form_for matcher.matches.build,
+              url: matches_path(matchable_type: matcher.class.name, matchable_id: matcher),
+              method: :post do |f|
+            %>
+        <%= f.input :matched_with, label: "Company or Intern name", placeholder:"Company or Intern name" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= f.submit "Submit", class: "btn btn-default" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

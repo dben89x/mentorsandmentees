@@ -1,0 +1,7 @@
+<div class="row featured-startups">
+  <% startups.each do |startup| %>
+    <%= link_to startup.company_website, target: '_blank' do %>
+      <%= image_tag startup.avatar(:thumb) %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<div class="container edit-profile">
+  <div class="col-xs-12 col-sm-8">
+    <div class="page-header">
+      <h1>Edit Job Listing for <%= @listing.company_name %></h1>
+    </div>
+
+    <%= render 'form', listing: @listing, profile: @listing.profile %>
+  </div>
+</div>

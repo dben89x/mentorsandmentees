@@ -1,0 +1,69 @@
+<div class="container profile">
+  <div class="col-xs-12 col-sm-8">
+    <div class="row heading">
+      <div class="page-header">
+        <h1><%= @listing.position_name %></h1>
+        <p class="lead"></p>
+      </div>
+      <%= image_tag @listing.avatar.url(:thumb) %>
+    </div>
+    <div class="row">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Startup</td>
+            <td><%= link_to @listing.name, @listing.path %></td>
+          </tr>
+          <tr>
+            <td>Posting Link</td>
+            <td><%= link_to(@listing.posting_link, @listing.posting_link, target: '_blank') if @listing.posting_link %></td>
+          </tr>
+          <tr>
+            <td>Startup Website</td>
+            <td><%= link_to(@listing.website_link, @listing.website_link, target: '_blank') if @listing.website_link %></td>
+          </tr>
+          <tr>
+            <td>Contact Name</td>
+            <td><%= @listing.contact_name %></td>
+          </tr>
+          <tr>
+            <td>Contact Email</td>
+            <td><%= mail_to @listing.contact_email %></td>
+          </tr>
+          <tr>
+            <td>Skills Request</td>
+            <td><%= @listing.skill_list.to_s %></td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td><%= @listing.description %></td>
+          </tr>
+          <tr>
+            <td>Hours Per Week</td>
+            <td><%= @listing.hours_per_week %></td>
+          </tr>
+          <tr>
+            <td>Category</td>
+            <td><%= @listing.category_name %></td>
+          </tr>
+          <tr>
+            <td>Location</td>
+            <td><%= @listing.location.try(:city_and_state) %></td>
+          </tr>
+          <tr>
+            <td>
+              Last Updated:
+            </td>
+            <td>
+              <%= @listing.updated_at.to_date.to_s(:long) %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @listing.profile == current_profile || current_user.admin? %>
+      <%= link_to "Edit", edit_listing_path(@listing), class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>

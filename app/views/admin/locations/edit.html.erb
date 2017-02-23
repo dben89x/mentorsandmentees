@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h1>Edit Location: <%= @location.city_and_state %></h1>
+
+  <%= simple_form_for(@location, url: admin_location_path(@location), method: :put, html: { class: 'form-horizontal' }) do |f| %>
+    <div class="short-input">
+      <%= f.input :city %>
+      <%= f.input :state %>
+      <%= f.input :state_abbreviation %>
+    </div>
+
+    <%= f.submit "Update", class: "btn btn-default submit" %>
+  <% end %>
+</div>

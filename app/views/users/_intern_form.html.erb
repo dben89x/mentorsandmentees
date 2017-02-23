@@ -1,0 +1,30 @@
+<p class="lead">
+  Congratulations on taking your first step toward a great internship in Colorado!
+</p>
+
+<%= simple_form_for(@user, url: user_registration_path, method: :post) do |f| %>
+  <%= f.error_notification %>
+  <%= f.hidden_field :role, value: 'intern' %>
+
+  <%= f.simple_fields_for 'intern_profile_attributes', f.object.intern_profile || f.object.build_intern_profile do |ff| %>
+    <%= ff.input :first_name, class: 'form-control' %>
+    <%= ff.input :last_name, class: 'form-control' %>
+    <%= ff.input :avatar, as: :file %>
+
+    <%= ff.simple_fields_for 'listing_attributes', ff.object.listing || ff.object.build_listing do |fff| %>
+      <%= fff.association :category, label: 'Area of Interest' %>
+    <% end %>
+  <% end %>
+
+  <%= f.input :email, class: 'form-control', required: true %>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation, "Password Confirmation" %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Sign Up", class: "btn btn-default" %>
+<% end %>

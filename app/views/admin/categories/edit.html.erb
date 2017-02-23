@@ -1,0 +1,12 @@
+<div class="container">
+
+  <h1>Edit Category: <%= @category.name %></h1>
+
+  <%= simple_form_for(@category, url: admin_category_path(@category), method: :put, html: { class: 'form-horizontal' }) do |f| %>
+    <div class="short-input">
+      <%= f.input :name %>
+    </div>
+
+    <%= f.submit "Update", class: "btn btn-default submit" %>
+  <% end %>
+</div>

@@ -1,0 +1,99 @@
+<div class="container">
+  <h1>Admin Dashboard</h1>
+  <p>Welcome to your battlestation. Let's do good things!</p>
+  <h2>Statistics</h2>
+  <ul>
+    <li>Users: <%= @users.count %></li>
+    <ul>
+      <li>
+        Interns: <%= @interns.count %>
+        <%= link_to admin_download_path(type: 'intern', format: :csv) do %>
+          <span class="admin-icon glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+        <% end %>
+      </li>
+      <li>
+        Startups: <%= @startups.count %>
+        <%= link_to admin_download_path(type: 'startup', format: :csv) do %>
+          <span class="admin-icon glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+        <% end %>
+      </li>
+      <li>Admins: <%= @admins.count %></li>
+    </ul>
+    <li>Job Listings: <%= @job_listings.count %></li>
+    <li>Matches: <%= @matches.count %>
+    <%= link_to admin_matches_path do %>
+      <span class="admin-icon glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+    <% end %>
+    </li>
+  </ul>
+
+  <h2>Listings</h2>
+  <ul>
+    <li>
+      Active Interns: <%= @active_interns.count %>
+      <%= link_to search_path(role: 'InternProfile') do %>
+        <span class="admin-icon glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+      <% end %>
+    </li>
+    <li>
+      Active Job Listings: <%= @active_job_listings.count %>
+      <%= link_to search_path(role: 'StartupProfile') do %>
+        <span class="admin-icon glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+      <% end %>
+    </li>
+  </ul>
+
+  <h2>Categories</h2>
+  <p>Current Categories:</p>
+  <ul>
+    <% @categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+  </ul>
+  <%= link_to "Edit Categories", admin_categories_path %>
+
+  <h2>Locations</h2>
+  <p>Current Locations:</p>
+  <ul>
+    <% @locations.each do |location| %>
+      <li><%= location.city_and_state %></li>
+    <% end %>
+  </ul>
+  <%= link_to "Edit Locations", admin_locations_path %>
+
+  <h2>Features Startups</h2>
+
+  <label>
+    <%= check_box_tag 'show_featured_startups', 'Show on homepage', @display_featured_startups,
+          data: {
+            remote: true,
+            url: admin_setting_url(:display_featured_startups),
+            method: 'PATCH'
+          } %>
+    Display featured startups on home page
+  </label>
+
+  <% #todo: add columns to the shared template? Not sure where else this will go %>
+  <div class="container">
+    <div class="row section">
+      <div class="col-xs-12">
+        <%= render 'shared/featured_startups', startups: FeaturedStartup.all.includes(:startup_profile) %>
+      </div>
+    </div>
+  </div>
+
+  <ul>
+  <% @featured_startups.each do |featured_startup| %>
+    <li>
+      <%= link_to featured_startup.name, featured_startup.path %>
+      <%= link_to admin_featured_startup_path(featured_startup),
+            method: :delete,
+            data: { confirm: 'Are you sure you want to un-feature this startup?' } do %>
+
+        <span class="admin-icon glyphicon glyphicon-remove" aria-hidden="true"></span>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+  <%= link_to "New Featured Startup", new_admin_featured_startup_path %>
+</div>

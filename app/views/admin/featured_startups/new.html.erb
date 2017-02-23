@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>New Featured Startup</h1>
+
+  <%= simple_form_for @featured_startup, url: admin_featured_startups_path do |f| %>
+    <%= f.association :startup_profile, label_method: :name %>
+
+    <%= f.submit "Create", class: "btn btn-default submit" %>
+  <% end %>
+</div>

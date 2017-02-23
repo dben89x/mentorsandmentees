@@ -1,0 +1,336 @@
+<div class="home">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Spark Internships</h1>
+      <h2>
+        Connecting Colorado Students &amp; Colorado Startups
+      </h2>
+      <a href="/student-signup" class="btn btn-default">Find an Internship</a>
+      <a href="/startup-signup" class="btn btn-default">Find an Intern</a>
+    </div>
+  </div>
+  <!-- trusted by startups section -->
+  <% if Setting.display_featured_startups %>
+    <div class="container">
+      <div class="row section">
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="heading">Trusted by your favorite startups</h2>
+            </div>
+          </div>
+          <% #todo: move this to presenter %>
+          <%= render 'shared/featured_startups', startups: FeaturedStartup.all.includes(:startup_profile) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <!-- how it works section -->
+  <div class="alternating-stripe">
+    <div class="container">
+      <div class="row section how-it-works">
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2>
+                How it Works
+              </h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <h3>
+                Students
+              </h3>
+              <h4>Why get an internship?</h4>
+              <p>
+                Looking for an awesome internship? Working with a startup is one of the most rewarding experiences you as a student can have. Everyday in your internship you'll pick up new skills, learn from founders, and gain new perspective on how to build a company. To get started, hit the find an internship button below!
+              </p>
+              <p>
+                Internships are a well-proven path to gain valuable knowledge, skill, and experience in the business world.
+              </p>
+              <p>
+                An internship with a startup is like an internship on steroids. You will get hands on experience in the day-to-day life of starting a company, which the average corporate intern never sees.
+              </p>
+
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <h3>
+                Startups
+              </h3>
+              <h4>Why get an intern?</h4>
+              <p>
+                Looking for a rockstar intern? As a startup, finding and recruiting quality talent is tough. Interns 2 Startups partners with colleges and universities around the state to help you find the best students to work with your startup. To get started, hit the find an intern button below!
+              </p>
+              <p>
+                Interns are great resources for many lean startups who need extra help executing on their ideas.
+              </p>
+              <p>
+                Interns bring a willing to work attitude and can provide value in helping with social media marketing, website design, email marketing, iOS app development, ruby web apps, SEO, and much more.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <h4 data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="toggle">
+                <span class="glyphicon glyphicon-plus"></span>
+                program details
+              </h4>
+              <ul class="collapse" id="collapseExample">
+                <li>Interns come from Universities and Colleges across the state of Colorado.</li>
+                <li>Interns are normally paid between $8/hr to $15/hr depending on the position.</li>
+                <li>Internship positions are between 10 to 40 hours per week and will vary depending on the position offered.</li>
+                <li>Part-time internships are encouraged during the school year.</li>
+                <li>Internship roles, duties, and experiences will vary based on the needs of the startup and by the skill set of the intern.</li>
+                <li>If an unpaid intern is needed, please review these
+                  <a href="http://www.dol.gov/whd/regs/compliance/whdfs71.htm">Department of Labor regulations</a>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- cta section -->
+  <div class="container">
+    <div class="row cta">
+      <div class="col-xs-12">
+        <a href="/student-signup" class="btn btn-default">Find an Internship</a>
+        <a href="/startup-signup" class="btn btn-default">Find an Intern</a>
+      </div>
+    </div>
+  </div>
+  <!-- testimonials section -->
+  <div class="alternating-stripe">
+    <div class="container">
+      <div class="row section alternating-stripe">
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2>what others are saying</h2>
+            </div>
+          </div>
+          <div class="row quote">
+            <div class="col-xs-12 col-sm-4">
+              <%= image_tag "people/PaulFoley.jpg", class: "img-responsive" %>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <blockquote>
+                <p>
+                  Spark Internships is creating a much needed bridge between Colorado students and the thriving Colorado startup scene. Finding quality interns is hard, and Spark Internships makes the process much easier.
+                </p>
+                <footer>Paul Foley, Co-Founder at Augur</footer>
+              </blockquote>
+            </div>
+          </div>
+          <div class="row quote">
+            <div class="col-xs-12 col-sm-4 col-sm-push-8">
+              <%= image_tag "people/FletcherRichman.jpg", class: "img-responsive" %>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-sm-pull-4">
+              <blockquote>
+                <p>
+                  Interning with Pivot Desk throughout my college career drastically accelerated my business and personal development. I recommend every student gets an internship with a startup.
+                </p>
+                <footer>Fletcher Richman, Platform Manager at Galvanize Ventures</footer>
+              </blockquote>
+            </div>
+          </div>
+          <div class="row quote">
+            <div class="col-xs-12 col-sm-4">
+              <%= image_tag "people/DevonTivona.jpg", class: "img-responsive" %>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <blockquote>
+                <p>
+                  Early internships with Everlater and Flipboard were critical in gaining the skills needed to start my first company. For any student that has the ambition to create their own business, a great place to start is by interning for a startup.
+                </p>
+                <footer>Devon Tivona, CEO at Pana</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- cta section -->
+  <div class="row cta">
+    <div class="col-xs-12">
+      <a href="/student-signup" class="btn btn-default">Find an Internship</a>
+      <a href="/startup-signup" class="btn btn-default">Find an Intern</a>
+    </div>
+  </div>
+  <!-- about us section -->
+  <div class="alternating-stripe">
+    <div class="container">
+      <div class="row section alternating-stripe">
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2>about us</h2>
+            </div>
+          </div>
+          <div class="row">
+            <!-- images -->
+            <div class="col-xs-4">
+              <div class="row">
+                <div class="col-xs-12">
+                  <%= image_tag "people/ArieannDeFazio.png", class: "img-responsive" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <p>
+                    <a href="https://www.linkedin.com/in/arieann">Arieann DeFazio</a>
+                    - Executive Director at
+                    <a href="http://sparkboulder.com/">SPARK</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="row">
+                <div class="col-xs-12">
+                  <%= image_tag "people/allan.jpg", class: "img-responsive" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <p>
+                    <a href="https://github.com/amclelland">Allan McLelland</a>
+                    - Software Developer at
+                    <a href="https://www.foraker.com/">Foraker Labs</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="row">
+                <div class="col-xs-12">
+                  <%= image_tag "people/ScottyWeiss.jpg", class: "img-responsive" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <p>
+                    <a href="https://www.linkedin.com/in/scottyweiss">Scotty Weiss</a>
+                    - Program Manager at
+                    <a href="http://www.sparkboulder.com/">Spark Internships</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <h2>supporters</h2>
+            </div>
+          </div>
+          <div class="row">
+            <!-- images -->
+            <div class="col-xs-4">
+              <div class="row">
+                <div class="col-xs-12">
+                  <%= image_tag "people/DonHazell.jpg", class: "img-responsive" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <a href="https://www.linkedin.com/pub/don-hazell/1/305/a">Don Hazell</a>
+                  - EVP Worldwide Field Operations at
+                  <a href="https://www.rallydev.com/">Rally Software</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="row">
+                <div class="col-xs-12">
+                  <%= image_tag "people/BradFeld.jpg", class: "img-responsive" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <a href="https://www.linkedin.com/in/bfeld">Brad Feld</a>
+                  - Managing Director at
+                  <a href="http://foundrygroup.com/">Foundry Group</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="row">
+                <div class="col-xs-12">
+                  <%= image_tag "people/ErickMueller.jpg", class: "img-responsive" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <a href="https://www.linkedin.com/pub/erick-mueller/7/7b6/b37">Erick Mueller</a>
+                  - Director of Entrepreneurship at
+                  <a href="http://www.colorado.edu/">CU</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <h2>sponsors</h2>
+            </div>
+          </div>
+          <div class="row">
+            <!-- images -->
+            <div class="col-xs-4 col-sm-4">
+              <%= image_tag "logos/demingcenter.jpg", class: "img-responsive" %>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+              <%= image_tag "logos/sparkboulder.jpg", class: "img-responsive" %>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+              <%= image_tag "logos/EntrepreneurialByNature.jpg", class: "img-responsive" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- get more info section -->
+  <div class="row get-more-info">
+    <div class="col-xs-12">
+      <a href="https://interns2startups.youcanbook.me/" class="btn btn-default">book a meeting today!</a>
+    </div>
+  </div>
+  <!-- google maps embed -->
+  <div class="container-fluid gmaps" id="map"></div>
+  <script>
+    var map;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+          lat: 40.0071384,
+          lng: -105.2781296
+        },
+        zoom: 13,
+        disableDefaultUI: true,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: false,
+        disableDoubleClickZoom: true,
+        scrollwheel: false,
+        draggable: false
+      });
+      var marker = new google.maps.Marker({
+        position: {
+          lat: 40.0071384,
+          lng: -105.2781296
+        },
+        map: map,
+        title: 'Spark Boulder'
+      });
+    }
+  </script>
+  <% # todo: looks like this is just making a static map. We can use the static map API instead %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQAhrvinZPqral7diJCW6-NuRkcFwAgHs&callback=initMap" async defer></script>
+</div>

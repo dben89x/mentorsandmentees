@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Admin: Locations</h1>
+
+  <p>Current Locations:</p>
+  <ul>
+    <% @locations.each do |location| %>
+      <li>
+        <%= location.city_and_state %>
+        <%= link_to edit_admin_location_path(location) do %>
+          <span class="admin-icon glyphicon glyphicon-pencil" aria-hidden="true"></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Add Location", new_admin_location_path, class: 'large-green' %>
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Matches</h1>
+
+  <% if @matches.present? %>
+    <ol>
+      <% @matches.each do |match| %>
+        <li><%= match.to_s %></li>
+      <% end %>
+    </ol>
+  <% else %>
+    <p>Nothing to see here! ¯\_(ツ)_/¯</p>
+  <% end %>
+</div>

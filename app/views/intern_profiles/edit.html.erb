@@ -1,0 +1,31 @@
+<div class="container edit-profile">
+  <div class="col-xs-12 col-sm-8">
+    <div class="page-header">
+      <h1>Edit <%= @profile.full_name %>'s Profile</h1>
+    </div>
+
+    <%= simple_form_for @profile do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :linked_in, label: 'LinkedIn' %>
+      <%= f.input :avatar, as: :file %>
+
+      <%= f.simple_fields_for 'listing_attributes', f.object.listing do |ff| %>
+        <%= ff.association :category, label: 'Area of Interest' %>
+        <%= ff.association :location, label_method: :city_and_state %>
+        <%= ff.input :hours_per_week, label: 'Desired hours per week' %>
+        <%= ff.input :skill_list, input_html: { value: ff.object.skill_list.to_s } %>
+        <p class="footnote">* Separate tags with commas</p>
+        <%= ff.input :description, label: 'Tell us a little bit about yourself' %>
+        <%= ff.input :active, label: 'Public' %>
+        <p class="footnote">
+          If you are turning your profile private because you found a match, please use the 'Found a Match' button on your profile instead. This helps us keep track of how much we are helping.
+        </p>
+      <% end %>
+
+      <%= link_to 'Cancel', @profile.path %>
+      <%= f.submit "Update", class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>

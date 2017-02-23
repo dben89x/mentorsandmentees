@@ -1,0 +1,56 @@
+<div class="container profile">
+  <div class="col-xs-12 col-sm-8">
+    <div class="row heading">
+      <div class="page-header">
+        <h1><%= @profile.company_name %></h1>
+        <p class="lead"></p>
+      </div>
+      <%= image_tag @profile.avatar.url(:thumb) %>
+    </div>
+    <div class="row">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Startup Website</td>
+            <td><%= link_to(@profile.company_website, @profile.company_website, target: '_blank') if @profile.company_website %></td>
+          </tr>
+          <tr>
+            <td>
+              Last Updated:
+            </td>
+            <td>
+              <%= @profile.updated_at.to_date.to_s(:long) %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <% if current_user.profile == @profile || current_user.admin? %>
+      <%= link_to "Edit Profile", edit_startup_profile_path(@profile), class: 'btn btn-default' %>
+      <%= link_to "Add Job Listing", new_listing_path, class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-xs-12 col-sm-12">
+    <div class="row heading">
+      <div class="page-header">
+        <h2>Job Listings</h2>
+      </div>
+    </div>
+
+    <div class="row search-results">
+      <% if current_user.profile == @profile || current_user.admin? %>
+        <% @listings.each do |listing| %>
+          <%= render 'shared/summary', listing: listing, preview: true %>
+        <% end %>
+      <% else %>
+        <% @listings.active.each do |listing| %>
+          <%= render 'shared/summary', listing: listing, preview: true %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

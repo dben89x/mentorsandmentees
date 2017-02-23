@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Search</h1>
+  </div>
+  <div class="jumbotron search">
+
+    <%= simple_form_for @search, url: search_path, method: :get do |f| %>
+    <div class="row">
+      <div class="col-xs-10 col-sm-6">
+        <%= f.input :hours_per_week %>
+        <%= f.input :skill_list %>
+        <p class="footnote">* Separate tags with commas</p>
+      </div>
+      <div class="col-xs-10 col-sm-6">
+        <%= f.input :location_id,
+                include_blank: '- Select A Location -',
+                collection: Location.all,
+                label_method: :city_and_state,
+                value_method: :id
+              %>
+        <%= f.input :category_id,
+                include_blank: '- Select A Category -',
+                collection: Category.all,
+                label_method: :name,
+                value_method: :id
+              %>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.submit "Search", class: "btn btn-default" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="page-header">
+    <h2>Search Results</h2>
+    <p>
+      Found
+      <%= @results.length %>
+      <%= 'result'.pluralize(@results.length) %>
+    </p>
+  </div>
+  <div class="row search-results">
+    <% @results.each do |result| %>
+      <%= render 'shared/summary', listing: result %>
+    <% end %>
+  </div>
+</div>

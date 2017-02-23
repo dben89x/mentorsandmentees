@@ -1,0 +1,43 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap-custom';
+
+@import 'modules/colors';
+@import 'modules/buttons';
+@import 'modules/links';
+@import 'modules/bootstrap_stuff';
+// todo: move this to a pages/ folder?
+@import 'modules/featured_startups';
+@import 'modules/listing_summary';
+@import 'modules/admin';
+@import 'modules/footer';
+// @import '**/*';
+
+body,
+html {
+  overflow-x: hidden;
+}
+
+.devise-links {
+  margin-top: 2em;
+}
+
+.breadcrumbs {
+  padding-left: 0;
+}
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.profile {
+  margin-bottom: 1em;
+}
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: $green;
+}
